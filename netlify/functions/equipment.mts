@@ -7,6 +7,14 @@ const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.VITE_SU
 const supabase = supabaseUrl && supabaseKey ? createClient(supabaseUrl, supabaseKey) : null
 
 const KNOWLEDGE_VERSION = "1.0.0"
+const PROMPT_VERSION = "1.0.0"
+
+// Gap detection phrases — logged when Magnus can't answer
+const GAP_PHRASES = [
+  "contact sales", "contact bunting", "reach out to", "I don't have",
+  "not in my knowledge", "beyond my", "specific pricing", "lead time",
+  "custom engineering", "consult with",
+]
 
 const SYSTEM_PROMPT = `You are Magnus, Bunting Magnetics' equipment specialist. You have comprehensive knowledge of magnetic separation equipment, metal detection, conveyor systems, and material handling. Answer technical questions about equipment selection, sizing, specifications, applications, and troubleshooting.
 
@@ -560,6 +568,8 @@ export default async (req: Request, _context: Context) => {
             provider,
             conversation_length: messages.length,
             knowledge_version: KNOWLEDGE_VERSION,
+            prompt_version: PROMPT_VERSION,
+            gap_detected: GAP_PHRASES.some(p => reply.toLowerCase().includes(p)) || undefined,
           },
         })
       } catch { /* mto_maggie table may not exist yet */ }
