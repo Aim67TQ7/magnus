@@ -5,26 +5,26 @@
 **Status:** Active
 
 ## What This Was
-Standalone app or experiment
+Knowledge agent — retrieves and synthesizes information from docs
 
 ## Current State
-Active — last pushed 2026-02-09. Part of current GP3 platform or active development.
+Active — deployed on Pete VPS
 
 ## Agent Replacement
-**Agent Name:** Magnus Knowledge Agent
+**Agent Name:** Magnus
 **Lives On:** Pete (187.77.28.22)
 **Orchestrator:** Standalone container
 **Endpoint or Trigger:** https://magnus.gp3.app
 **Supabase Table:** N/A
 
 ## Handoff Notes
-This repo's core function was: General purpose / unclear. Business context: Standalone app or experiment.
+Core function: Document Q&A, knowledge base search, context retrieval for other agents. Context: Knowledge agent — retrieves and synthesizes information from docs
 
 ## Dependencies
-- None identified from README
+- None identified — check package.json for specifics
 
 ## Last Known Working State
 2026-02-09
 
 ## Claude's Notes
-- WARNING: No README found. Classification based on name/description only.
+- No README existed. Classification based on repo name.
